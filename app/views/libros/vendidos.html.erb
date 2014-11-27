@@ -1,0 +1,16 @@
+<!-- main content -->
+    <div id="content">
+      <article>
+        <h2>Best Sellers</h2>
+   <hr size="6" noshade>
+        <% @vendidos.each do |libro| %>
+        <h6><%=link_to libro.nombre, libro %><div align="right">$<%= libro.precio %>0</div></h6>
+        <%= libro.autor %>
+        <hr>
+        
+       <% end %>
+    </article>
+      
+    
+    <!-- / content body -->
+  

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Libreria</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+   
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1 class="shake animated"><%= link_to 'Libreria ABC', root_path %></h1>
+      <h2>Tu Libreria mas cercana</h2>
+    </div>
+    <nav>
+      <ul>
+        <% if !user_signed_in? %>
+	      <%= link_to 'Entrar', new_user_session_path %>
+        <% end %>
+        <% if user_signed_in? %>
+	      <h6>Bienvenido <%= current_user.email %>!
+	       <%= link_to 'Salir', destroy_user_session_path, method: :delete %>
+         <% end %></h6>
+      </ul>
+    </nav>
+  </header>
+</div>
+  <!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <section id="slider"><img src="http://library.gsu.edu/files/2012/12/021508Library0014_o4.jpg" alt=""></section>
+    <!-- content body -->
+    <aside id="left_column">
+      <h2 class="title">Categories</h2>
+      <nav>
+        <ul>
+          <li><%= link_to 'Principal', root_path %></li>
+          <li><%= link_to 'Ubicacion', ubicacion_path %></li>
+          <li><%= link_to 'Ultimos Libros', ultimos_path %></li>
+          <li><%= link_to 'Mas Vendidos', vendidos_path %></li>
+          <li><%= link_to 'Sobre Nosotros', nosotros_path %></li>
+          </ul>
+      </nav>
+      <!-- /nav -->
+      <h2 class="title">Contacnanos</h2>
+      <section class="last">
+        <address>
+        Juvenal J. Beltran<br>
+        235533<br>
+        Tel: (614)-133-3949<br>
+        Email: a235533@uach.mx<br>
+        <br>  
+        Jose F. Tavares<br>
+        257327<br>
+        Tel: (614)-215-3656<br>
+        Email: a257327@uach.mx<br>
+        <br>
+        Joel R. Valdez<br>
+        236811<br>
+        Tel: (614)-285-8198<br>
+        Email: a256811@uach.mx<br>
+        
+        </address>
+      </section>
+      <!-- /section -->
+    </aside>
+
+    <%= yield %>
+    </div>
+    </div>
+    
+    <!-- footer -->
+<div class="wrapper row3" >
+  <footer id="footer" class="clear">
+    <p class="fl_right">Copyright &copy; 2014 - Derechos Reservados-Libreria ABC S.A. de C.V.</p>
+    
+  </footer>
+</div>
+
+ </body>
+</html>
